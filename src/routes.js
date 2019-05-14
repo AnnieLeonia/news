@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import HelloWorld from "./components/HelloWorld";
+import Feed from "./components/Feed";
 import Article from "./components/Article";
 
 Vue.use(VueRouter);
@@ -10,7 +10,7 @@ export default new VueRouter({
   routes: [
     {
       path: "/",
-      component: HelloWorld
+      component: Feed
     },
     {
       path: "/news",

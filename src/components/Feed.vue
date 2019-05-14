@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "Feed",
   data() {
     return {
       header: "NEWS",
