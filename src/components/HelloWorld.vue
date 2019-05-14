@@ -10,12 +10,14 @@
       </span>
       <p>{{ slideArticle }}</p>
     </div>
-    <p>Search for news articles:</p>
-    <input type="text" v-model="filter" />
+    <div class="search">
+      <p>Search for news articles:</p>
+      <input type="text" v-model="filter" />
+    </div>
     <ul>
-      <li v-for="(n, index) in filteredNews" v-bind:key="index">
-        <v-icon v-if="ifRead(n)" name="check" />
-        <a v-on:click="getArticle(n, index)">{{ n.title[0] }}</a>
+      <li v-for="(article, index) in filteredNews" v-bind:key="index">
+        <v-icon class="check" v-if="ifRead(article)" name="check" />
+        <a v-on:click="getArticle(article)">{{ article.title[0] }}</a>
         <v-icon class="star" name="star" scale="1.5" />
       </li>
     </ul>
@@ -61,10 +63,9 @@ export default {
     }
   },
   methods: {
-    getArticle: function(n, index) {
-      console.log(index);
+    getArticle: function(article) {
       this.$router.push("/news");
-      this.$store.commit("setCurrentArticle", this.news.indexOf(n));
+      this.$store.commit("setCurrentArticle", this.news.indexOf(article));
     },
     ifRead: function(n) {
       const article = this.news.indexOf(n);
@@ -126,6 +127,7 @@ a {
 }
 
 input[type="text"] {
+  margin: 0 1em;
   width: 50%;
 }
 
@@ -143,9 +145,15 @@ input[type="text"] {
   margin: 0 2em;
 }
 
+.search {
+  padding: 1em;
+  border: #42b983 solid 5px;
+  text-align: center;
+}
+
 .icon {
   position: absolute;
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 .left {
@@ -154,6 +162,10 @@ input[type="text"] {
 
 .right {
   right: 1em;
+}
+
+.check {
+  padding-right: 0.5em;
 }
 
 .star {
