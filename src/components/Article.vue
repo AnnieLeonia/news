@@ -22,7 +22,9 @@ export default {
       window.history.length > 1 ? this.$router.go(-1) : this.$router.push("/");
     }
   },
-  created: function() {}
+  created: function() {
+    console.log(this.$store.state.currentArticle);
+  }
 };
 </script>
 
