@@ -17,11 +17,11 @@ const Store = new Vuex.Store({
     setNews(state, newNews) {
       state.news = newNews;
     },
-    setReadArticles(state, index) {
-      state.readArticles.push(index);
-    },
     setCurrentArticle(state, index) {
-      state.currentArticle = index;
+      state.currentArticle = state.news[index];
+      if (state.readArticles.indexOf(index) == -1) {
+        state.readArticles.push(index);
+      }
     }
   }
 });
