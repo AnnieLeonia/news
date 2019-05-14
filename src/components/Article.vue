@@ -4,6 +4,7 @@
     <h1>{{ currentArticle.title[0] }}</h1>
     <div class="article">
       <p>{{ currentArticle.description[0] }}</p>
+      <br />
       <i>{{ currentArticle.pubDate[0] }}</i>
     </div>
     <a :href="currentArticle.link[0]" target="_blank">
