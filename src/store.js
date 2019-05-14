@@ -6,7 +6,9 @@ Vue.use(Vuex);
 const Store = new Vuex.Store({
   state: {
     name: "",
-    news: []
+    news: [],
+    readArticles: [],
+    currentArticle: -1
   },
   mutations: {
     setName(state, newName) {
@@ -14,6 +16,12 @@ const Store = new Vuex.Store({
     },
     setNews(state, newNews) {
       state.news = newNews;
+    },
+    setReadArticles(state, index) {
+      state.readArticles.push(index);
+    },
+    setCurrentArticle(state, index) {
+      state.currentArticle = index;
     }
   }
 });

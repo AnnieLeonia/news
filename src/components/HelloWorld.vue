@@ -1,7 +1,6 @@
 <template>
   <div class="hello">
-    Hello
-    <button v-on:click="hello2()">NAME</button>
+    <h1>News</h1>
     <ul>
       <li v-for="(n, index) in news" v-bind:key="index">
         <a v-on:click="getArticle(index)">{{ n.title[0] }}</a>
@@ -27,17 +26,16 @@ export default {
     },
     getArticle(index) {
       console.log(index);
-      this.$router.push("/news:index");
+      this.$router.push("/news");
+      this.$store.commit("setCurrentArticle", index);
     }
   },
   created: async function() {
-    console.log("hej");
     var parseString = require("xml2js").parseString;
     var res = await fetch("/rss.xml");
     var html = await res.text();
     var news1;
     parseString(html, function(err, result) {
-      console.dir(result.rss.channel[0].item);
       const news = result.rss.channel[0].item;
       news1 = news;
     });
@@ -48,6 +46,9 @@ export default {
 </script>
 
 <style scoped>
+body {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+}
 h3 {
   margin: 40px 0 0;
 }
@@ -58,6 +59,7 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
+  cursor: pointer;
 }
 a {
   color: #42b983;

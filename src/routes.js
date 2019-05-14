@@ -13,7 +13,7 @@ export default new VueRouter({
       component: HelloWorld
     },
     {
-      path: "/news:id",
+      path: "/news",
       component: Article
     }
   ]
