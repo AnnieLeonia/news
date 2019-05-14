@@ -5,11 +5,15 @@ Vue.use(Vuex);
 
 const Store = new Vuex.Store({
   state: {
-    name: ""
+    name: "",
+    news: []
   },
   mutations: {
     setName(state, newName) {
       state.name = newName;
+    },
+    setNews(state, newNews) {
+      state.news = newNews;
     }
   }
 });
