@@ -89,11 +89,11 @@ export default {
     var parseString = require("xml2js").parseString;
     var res = await fetch("/rss.xml");
     var html = await res.text();
-    var res;
+    var news;
     parseString(html, function(err, result) {
-      res = result.rss.channel[0].item;
+      news = result.rss.channel[0].item;
     });
-    this.$store.commit("setNews", res);
+    this.$store.commit("setNews", news);
   }
 };
 </script>
